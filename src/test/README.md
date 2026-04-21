@@ -38,7 +38,7 @@ The Python test script performs the following:
 
 ## Usage
 
-The application is already built — cloning the repository allows you to directly run the test script:
+The application is already built, cloning the repository allows you to directly run the test script:
 
 ```bash
 python test_ramulator2.py
