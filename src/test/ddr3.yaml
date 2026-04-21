@@ -1,0 +1,38 @@
+Frontend:
+  impl: SimpleO3
+  clock_ratio: 4        # CPU:DRAM = 4:1  →  ~3.2 GHz CPU / 800 MHz DDR3-1600
+  num_expected_insts: 500000
+  traces:
+    - example_inst.trace
+
+  Translation:
+    impl: RandomTranslation
+    max_addr: 2147483648
+
+
+MemorySystem:
+  impl: GenericDRAM
+  clock_ratio: 3
+
+  DRAM:
+    impl: DDR3
+    org:
+      preset: DDR3_8Gb_x8
+      channel: 1
+      rank: 2
+    timing:
+      preset: DDR3_1600K
+
+  Controller:
+    impl: Generic
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: ClosedRowPolicy
+      cap: 4
+    plugins:
+
+  AddrMapper:
+    impl: RoBaRaCoCh
